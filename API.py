@@ -100,14 +100,17 @@ iface = gr.Interface(
     Type a message and click 'Submit' to hear a spoken response. 
     The chatbot remembers the last few turns of your conversation.
     """,
-    allow_flagging="never"
+    flagging_mode="never"
 )
 
 
 
 if __name__ == "__main__":
     # This starts the web server and makes the app accessible
-    iface.launch()
+    iface.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.getenv("PORT", 7860))
+    )
 
 
 
